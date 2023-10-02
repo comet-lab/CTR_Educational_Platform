@@ -35,7 +35,7 @@ classdef Drive < handle
 
         % sets the home position on the robot to be the current pose
         function set_home_as_current(self)
-            command = 'G92 ' + self.currPose.get_gcode_for_pose() + '\n';
+            command = 'G92 ' + self.homePose.get_gcode_for_pose() + '\n';
             self.send_command(command)
         end
 
