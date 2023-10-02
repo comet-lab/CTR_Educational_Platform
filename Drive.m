@@ -29,13 +29,13 @@ classdef Drive < handle
         
         % sets the home position on the robot to be the given pose
         function set_home_as_pose(self, pose)
-            command = 'G92 ' + pose.get_gcode_for_pose(pose) + '\n';
+            command = 'G92 ' + pose.get_gcode_for_pose() + '\n';
             self.send_command(command)
         end
 
         % sets the home position on the robot to be the current pose
         function set_home_as_current(self)
-            command = 'G92 ' + pose.get_gcode_for_pose(self.currPose) + '\n';
+            command = 'G92 ' + self.currPose.get_gcode_for_pose() + '\n';
             self.send_command(command)
         end
 
@@ -43,11 +43,11 @@ classdef Drive < handle
         % the device 
         function set_current_pose(self, currPose)
             % set home to be 0
-            self.set_home_as(self.homePose);
+            self.set_home_as_pose(self.homePose);
 
             % set home to be inverse of currPose
             invCurrPose = Pose(-currPose.lin1, -currPose.lin2, -currPose.lin3, -currPose.rot1, -currPose.rot2, -currPose.rot3);
-            self.set_home_as(invCurrPose);
+            self.set_home_as_pose(invCurrPose);
         end
 
         % Travels for the given distance; sets current pose to match

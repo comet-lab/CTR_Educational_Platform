@@ -17,7 +17,7 @@ drive_bot.travel_for(0,0,10,0,0,0)
 drive_bot.travel_for(0,0,0,90,0,0)
 
 %% Test rotation 2
-drive_bot.travel_for(0,0,0,0,90,0,0)
+drive_bot.travel_for(0,0,0,0,90,0)
 
 %% Test rotation 3
 drive_bot.travel_for(0,0,0,0,0,90)
