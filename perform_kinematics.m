@@ -7,11 +7,14 @@ tube3 = Tube(1.726*10^-3, 1.98*10^-3, 1/29, 250*10^-3, 50*10^-3, 1935*10^6);
 
 tubes = [tube1, tube2];
 
-robot = Solution_Robot(tubes);
+robot = Solution_Robot(tubes, false);
 
+% q values for testing with two tubes
 q_var = [0, 0, 0, 0; 
          20, 50, 45, -45; 
-         30, 35, -35, 20,];
+         30, 35, -35, 20];
+
+% q values for testing with three tubes
 % q_var = [0, 0, 0, 0, 0, 0; 
 %          20, 50, 70, 45, -45, 45; 
 %          30, 35, 50, -35, 20, -10];
@@ -20,9 +23,6 @@ T = {};
 for i = 1:size(q_var,1)
     disp(q_var(i,:));
     set_T = robot.fkin(q_var(i,:));
-    T_0_1 = set_T(:,:,1);
-    T_1_2 = set_T(:,:,2);
-    T_2_3 = set_T(:,:,3);
-    T{i} = T_0_1 * T_1_2 * T_2_3;
+    T{i} = set_T;
     disp(T{i});
 end
