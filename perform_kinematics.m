@@ -7,12 +7,16 @@ tube3 = Tube(1.726*10^-3, 1.98*10^-3, 1/29, 250*10^-3, 50*10^-3, 1935*10^6);
 
 tubes = [tube1, tube2];
 
-robot = Solution_Robot(tubes, false);
+robot = Robot(tubes, false);
 
 % q values for testing with two tubes
+% q_var = [0, 0, 0, 0; 
+%          20, 50, 45, -45; 
+%          30, 35, -35, 20];
+
 q_var = [0, 0, 0, 0; 
-         20, 50, 45, -45; 
-         30, 35, -35, 20];
+         0,35.15,0,0];
+
 
 % q values for testing with three tubes
 % q_var = [0, 0, 0, 0, 0, 0; 
