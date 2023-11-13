@@ -43,17 +43,13 @@ classdef Robot < handle
         % Get rho values from joint positions
         % Return rho (1 x i vector, i is num tubes)
         function rho = get_rho_values(self, q_var)
-            % Here q_var = [lin1, lin2, rot1, rot2] or
-            % q _var = [lin1, lin2, lin3, rot1, rot2, rot3]
+            % Here we extract rho values from the q_var vector
 
-            % First define rho values in terms of joint variables. We
-            % assume that T1 moves with q_var(1). Since we want rho1 to be 0,
-            % we have to subtract q_var(1) from other variables. 
+            % Initialize a vector to hold the result
+            rho = zeros([1 self.num_tubes]);
 
-            if(self.num_tubes == 2)
-                rho = [0, q_var(2) - q_var(1)]*10^-3;
-            else
-                rho = [0, q_var(2) - q_var(1), q_var(3) - q_var(1)]*10^-3;
+            for i=2:self.num_tubes
+                rho(i) = (q_var(i) - q_var(1)) * 10^-3;
             end
 
         end
@@ -61,20 +57,21 @@ classdef Robot < handle
         % Function to find the link lengths, in order
         % Returns link lengths (1 x j vector, where j is num links)
         function s = get_links(self, rho)
-            % your code goes here
-            %
-            %
+            % ********************************************************
+            %                          TODO
+            % ********************************************************
         end
 
         % Function to get theta values
         % Returns theta (1 x j vector where j is num links)
         function theta = get_theta(self, q_var)
-            % We know thete from the joint variables
-                
-            if (self.num_tubes == 2)
-                theta = [q_var(3), q_var(4)];
-            else
-                theta = [q_var(4), q_var(5), q_var(6)];
+            % Here we extract theta values from the q_var vector
+
+            % Initialize a vector to hold the result
+            theta = zeros([1 self.num_tubes]);
+
+            for i=1:self.num_tubes
+                theta(i) = deg2rad(q_var(i+self.num_tubes));
             end
         end
 
@@ -84,9 +81,9 @@ classdef Robot < handle
         % Should return phi (1 x j vector, where j is num links)
         % and K (1 x j vector)
         function [phi,K] = calculate_phi_and_kappa(self, theta)
-            % your code goes here
-            %
-            %
+            % ********************************************************
+            %                          TODO
+            % ********************************************************
         end
 
         % Take in all robot dependent parameters (lls, phi, kappa) and
@@ -94,9 +91,9 @@ classdef Robot < handle
         % Returns a 4x4 transformation matrix from base frame to end
         % effector
         function T = calculate_transform(self, s, phi, K)
-            % your code goes here
-            %
-            %
+            % ********************************************************
+            %                          TODO
+            % ********************************************************
         end
     end
 end

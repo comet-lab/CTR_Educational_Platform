@@ -23,10 +23,9 @@ classdef Tube < handle
             self.l = l;
             self.d = d;
             self.E = E;
-            self.I = (pi/4)*(od^4 - id^4);
+            self.I = (pi/64)*(od^4 - id^4);
             self.J = 2*self.I;
             self.G = self.E/(2 * (1 + 0.217));
-%             self.G = 3.93*10^9;
 
         end
 
