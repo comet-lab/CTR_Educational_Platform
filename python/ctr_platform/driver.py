@@ -1,4 +1,13 @@
-"""Serial G-code driver for the CTR platform, ported from Drive.m."""
+"""
+This contains the serial G-code driver for the CTR platform, ported from Drive.m.
+
+The transport sits behind a small protocol so the driver can run without
+hardware. SerialTransport talks to the Octopus board and DryRunTransport
+records the lines for unit tests in software.
+
+Drive.m opens the port at 250000 baud while the lab reference notes use 115200, so a user needs to
+confirm this rate against the board's config.
+"""
 
 from typing import Protocol
 
@@ -42,7 +51,10 @@ class SerialTransport:
 
 
 class GCodeDriver:
-    """Drives the CTR actuation unit over G-code, ported from the Drive class."""
+    """
+    Drives the CTR actuation unit over G-code, ported from the Drive class.
+
+    """
 
     def __init__(self, transport: Transport, start_pose: Pose | None = None) -> None:
         self._transport = transport
@@ -55,7 +67,7 @@ class GCodeDriver:
         self.send_command("G92 " + pose.to_gcode())
 
     def set_current_pose_as_home(self) -> None:
-        """Make the current position the new zero origin."""
+        """ make the current position the new zero origin. """
         self.set_current_pose(Pose())
 
     def travel_for(
@@ -63,7 +75,7 @@ class GCodeDriver:
         lin1: float = 0.0, lin2: float = 0.0, lin3: float = 0.0,
         rot1: float = 0.0, rot2: float = 0.0, rot3: float = 0.0,
     ) -> None:
-        """Move by a delta on each axis, relative to where the robot is now."""
+        """ Move by a delta on each axis, relative to where the robot is now. """
         now = self.current_pose
         target = Pose(
             now.lin1 + lin1, now.lin2 + lin2, now.lin3 + lin3,
