@@ -1,10 +1,4 @@
-"""
-Tube geometry and material properties, ported from Tube.m.
-
-A tube holds its measured dimensions along with the bending and torsional
-constants that follow from them, so the kinematics can read stiffness
-straight off the tube.
-"""
+"""Tube geometry and material properties, ported from Tube.m."""
 
 import math
 from dataclasses import dataclass, field

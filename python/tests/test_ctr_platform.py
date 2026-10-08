@@ -4,14 +4,11 @@ import math
 
 import numpy as np
 import pytest
-from ctr_platform import (
-    DryRunTransport,
-    GCodeDriver,
-    JointspaceGenerator,
-    Pose,
-    Robot,
-    Tube,
-)
+from ctr_platform.driver import DryRunTransport, GCodeDriver
+from ctr_platform.gcode import Pose
+from ctr_platform.jointspace import JointspaceGenerator
+from ctr_platform.robot import Robot
+from ctr_platform.tube import Tube
 
 
 def test_pose_gcode_scales_linear_axes_by_16():

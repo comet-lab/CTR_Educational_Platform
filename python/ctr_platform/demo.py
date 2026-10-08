@@ -5,7 +5,8 @@ Uses DryRunTransport so it prints the G-code it would send without the board.
 Swap in SerialTransport(port) to drive real hardware.
 """
 
-from ctr_platform import DryRunTransport, GCodeDriver, Pose
+from ctr_platform.driver import DryRunTransport, GCodeDriver
+from ctr_platform.gcode import Pose
 
 
 def main() -> None:

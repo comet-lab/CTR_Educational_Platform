@@ -27,7 +27,8 @@ way the MATLAB leaves them as TODOs. Students fill in `get_links`,
 It prints the G-code the driver would send. To drive real hardware, build the
 driver with a `SerialTransport` instead of `DryRunTransport`:
 
-    from ctr_platform import GCodeDriver, SerialTransport, Pose
+    from ctr_platform.driver import GCodeDriver, SerialTransport
+    from ctr_platform.gcode import Pose
 
     bot = GCodeDriver(SerialTransport("/dev/ttyACM0"), Pose())
     bot.travel_for(lin1=10)

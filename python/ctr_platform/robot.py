@@ -1,10 +1,4 @@
-"""
-CTR forward kinematics scaffold, ported from Robot.m.
-
-The joint-unpacking helpers are implemented, but the constant-curvature
-kinematics are left as exercises to match the TODOs in the MATLAB. Students
-fill in get_links, calculate_phi_and_kappa, and calculate_transform.
-"""
+"""CTR forward kinematics scaffold, ported from Robot.m."""
 
 import numpy as np
 

@@ -1,12 +1,4 @@
-"""
-G-code formatting for the CTR platform, ported from Pose.m.
-
-A Pose is the six-axis carriage state of the actuation unit, three linear
-axes (X, Y, Z) and three rotary (A, B, C). Linear axes get scaled by 16 on
-the way out because the firmware runs with uncalibrated steps-per-unit, while
-rotary axes go out in degrees as-is. The scale sits in one constant so a
-calibrated firmware only has to change that number.
-"""
+"""G-code formatting for the CTR platform, ported from Pose.m."""
 
 from dataclasses import dataclass
 

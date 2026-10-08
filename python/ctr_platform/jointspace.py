@@ -1,11 +1,4 @@
-"""
-Random joint-space pose generator, ported from Jointspace_Generator.m.
-
-Each carriage has an allowed linear and rotary range, and a sample draws an
-integer inside every range. The linear axes come out as running sums because
-each tube's carriage carries the tubes nested inside it. The Cart class was
-missing from the MATLAB repo and is reconstructed here from its usage.
-"""
+"""Random joint-space pose generator, ported from Jointspace_Generator.m."""
 
 from dataclasses import dataclass
 

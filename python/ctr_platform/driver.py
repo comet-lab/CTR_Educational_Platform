@@ -1,13 +1,4 @@
-"""
-Serial G-code driver for the CTR platform, ported from Drive.m.
-
-The transport sits behind a small protocol so the driver can run without
-hardware. SerialTransport talks to the Octopus board and DryRunTransport
-records the lines for tests.
-
-Drive.m opens the port at 250000 baud while the lab notes say 115200, so
-confirm against the board. Baud is a parameter defaulting to the MATLAB value.
-"""
+"""Serial G-code driver for the CTR platform, ported from Drive.m."""
 
 from typing import Protocol
 
@@ -51,14 +42,7 @@ class SerialTransport:
 
 
 class GCodeDriver:
-    """
-    Drives the CTR actuation unit over G-code, ported from the Drive class.
-
-    The robot is open-loop with no encoders, limit switches, or e-stop. The
-    operator hand-poses it, zeroes with G92, then moves inside known travel.
-    set_home_as_pose from the MATLAB is left out because it had an apparent
-    sign error and nothing here needs it.
-    """
+    """Drives the CTR actuation unit over G-code, ported from the Drive class."""
 
     def __init__(self, transport: Transport, start_pose: Pose | None = None) -> None:
         self._transport = transport
