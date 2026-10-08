@@ -1,0 +1,38 @@
+# CTR Educational Platform - Python port
+
+This module just contains a Python port of the MATLAB driver in this repo, so the concentric tube
+robot can be run from Python over the same G-code interface.
+
+The constant curvature kinematics in `robot.py` are left as exercises, the same
+way that the MATLAB code leaves them as TODOs. Students will likewise need to fill in `get_links`,
+`calculate_phi_and_kappa`, and `calculate_transform`.
+
+## Install
+
+    pip install -r requirements.txt
+
+## Run the demo
+
+    python -m ctr_platform.demo
+
+It prints the G-code the driver would send. To drive real hardware, build the
+driver with a `SerialTransport` instead of `DryRunTransport`:
+
+    from ctr_platform.driver import GCodeDriver, SerialTransport
+    from ctr_platform.gcode import Pose
+
+    bot = GCodeDriver(SerialTransport("/dev/ttyACM0"), Pose())
+    bot.travel_for(lin1=10)
+
+## Tests
+
+    pytest
+
+## Hardware notes
+
+Note that by default, the robot is open loop, with no encoders, limit switches, or an e-stop button. The
+operator will need to do some set-by-hand-poses, zero the robot with G92, then commands moves inside the known
+travel. Linear axes are scaled by 16 in the G-code because the firmware runs
+with uncalibrated steps-per-unit (see `LINEAR_SCALE` in `gcode.py`). Drive.m
+opened the port at 250000 baud while the lab notes mention 115200, so a tester
+will need to confirm the baud rate against the board.
