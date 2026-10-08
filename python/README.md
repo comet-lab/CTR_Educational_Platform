@@ -3,15 +3,6 @@
 This module just contains a Python port of the MATLAB driver in this repo, so the concentric tube
 robot can be run from Python over the same G-code interface.
 
-## Layout
-
-- `ctr_platform/gcode.py` - Pose and its G-code formatting (from Pose.m)
-- `ctr_platform/driver.py` - serial G-code driver (from Drive.m)
-- `ctr_platform/tube.py` - tube geometry and elastic constants (from Tube.m)
-- `ctr_platform/robot.py` - forward kinematics scaffold (from Robot.m)
-- `ctr_platform/jointspace.py` - random joint-space pose generator
-- `ctr_platform/demo.py` - runnable demo mirroring test.m
-
 The constant curvature kinematics in `robot.py` are left as exercises, the same
 way that the MATLAB code leaves them as TODOs. Students will likewise need to fill in `get_links`,
 `calculate_phi_and_kappa`, and `calculate_transform`.
